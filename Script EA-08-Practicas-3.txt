@@ -1,0 +1,33 @@
+/* Se crea la base de datos */
+DROP SCHEMA IF EXISTS practica;
+DROP USER IF EXISTS 'usuario_practica'@'%';
+CREATE SCHEMA practica;
+
+CREATE USER 'usuario_practica'@'%' IDENTIFIED BY 'la_Clave'; /* Reemplaza 'tu_contraseña' con la contraseña adecuada */
+
+/* Se asignan los privilegios sobre la base de datos al usuario creado */
+GRANT ALL PRIVILEGES ON practica.* TO 'usuario_practica'@'%';
+FLUSH PRIVILEGES;
+
+/* Se selecciona la base de datos */
+USE practica;
+
+/* La tabla de categoría contiene categorías de productos */
+CREATE TABLE arbol (
+    id_arbol INT AUTO_INCREMENT PRIMARY KEY,
+    ruta_imagen VARCHAR(1024),
+    nombre_comun VARCHAR(50) NOT NULL,
+    tipo_flor VARCHAR(50) NOT NULL,
+    dureza_madera DECIMAL(8,2) NOT NULL,
+    altura_arbol INT NOT NULL,
+    activo bool
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO arbol (ruta_imagen, nombre_comun, tipo_flor, dureza_madera, altura_arbol, activo) VALUES
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Pino', 'Conífera', 10.5, 25, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Roble', 'Caducifolio', 6.3, 30, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Olivo', 'No floral', 9.2, 15, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Cerezo', 'Frutal', 8.7, 20, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Secuoya', 'Conífera', 3.2, 50, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Manzano', 'Frutal', 8.1, 18, true),
+('https://previews.123rf.com/images/rigucci/rigucci1205/rigucci120500082/13852315-pino-%C3%A1rbol-y-un-banco-de-picnic.jpg', 'Abedul', 'Caducifolio', 5.8, 22, true);
